@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative '../config/environmant'
+
+begin
+  server = GeocoderServer.new
+
+  puts ' [x] Start Geocoder RPC server...'
+  server.start('ads_sync')
+  server.loop_forever
+rescue Interrupt => _e
+  server.stop
+end
